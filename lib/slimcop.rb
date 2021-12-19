@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "slimcop/version"
+require_relative 'slimcop/version'
 
 module Slimcop
   class Error < StandardError; end
