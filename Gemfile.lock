@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     slimcop (0.1.0)
+      slimi
 
 GEM
   remote: https://rubygems.org/
@@ -40,6 +41,9 @@ GEM
     rubocop-ast (1.15.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    slimi (0.1.0)
+      temple
+    temple (0.8.2)
     unicode-display_width (2.1.0)
 
 PLATFORMS
