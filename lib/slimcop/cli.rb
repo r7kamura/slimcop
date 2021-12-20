@@ -11,11 +11,9 @@ module Slimcop
 
     def call
       options = parse!
-      rubocop_config = RuboCop::ConfigLoader.default_configuration
       @argv.each do |slim_file_path|
         runner = Runner.new(
-          file_path: slim_file_path,
-          rubocop_config: rubocop_config
+          file_path: slim_file_path
         )
         if options[:auto_correct]
           puts runner.auto_correct

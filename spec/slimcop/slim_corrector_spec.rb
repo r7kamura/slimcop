@@ -18,8 +18,7 @@ RSpec.describe Slimcop::SlimCorrector do
 
     let(:offenses) do
       Slimcop::Runner.new(
-        file_path: file_path,
-        rubocop_config: RuboCop::ConfigLoader.default_configuration
+        file_path: file_path
       ).offenses
     end
 

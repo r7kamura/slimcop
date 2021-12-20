@@ -5,8 +5,7 @@ require 'rubocop'
 RSpec.describe Slimcop::Runner do
   let(:runner) do
     described_class.new(
-      file_path: 'spec/fixtures/dummy.slim',
-      rubocop_config: RuboCop::ConfigLoader.default_configuration
+      file_path: 'spec/fixtures/dummy.slim'
     )
   end
 

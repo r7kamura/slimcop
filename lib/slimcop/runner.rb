@@ -4,17 +4,15 @@ module Slimcop
   # Report offenses in Slim file, and apply auto-corrections if required.
   class Runner
     # @param [String] file_path
-    # @param [RuboCop::Config] rubocop_config
-    def initialize(file_path:, rubocop_config:)
+    def initialize(file_path:)
       @file_path = file_path
-      @rubocop_config = rubocop_config
     end
 
     # @return [Array<Hash>]
     def offenses
       @offenses ||= SlimOffenseCollector.new(
         file_path: @file_path,
-        rubocop_config: @rubocop_config,
+        rubocop_config: rubocop_config,
         source: source
       ).call
     end
@@ -28,6 +26,11 @@ module Slimcop
     end
 
     private
+
+    # @return [RuboCop::Config]
+    def rubocop_config
+      ::RuboCop::ConfigLoader.default_configuration
+    end
 
     # @return [Array<Hash>]
     def snippets
