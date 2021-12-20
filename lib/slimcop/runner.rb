@@ -36,11 +36,6 @@ module Slimcop
       ::RuboCop::ConfigLoader.merge_with_default(config, config_path)
     end
 
-    # @return [Array<Hash>]
-    def snippets
-      RubyExtractor.new(source: source).call
-    end
-
     # @return [String]
     def source
       ::File.read(@file_path)
