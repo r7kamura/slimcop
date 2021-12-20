@@ -29,7 +29,9 @@ module Slimcop
 
     # @return [RuboCop::Config]
     def rubocop_config
-      ::RuboCop::ConfigLoader.default_configuration
+      config_path = ::File.expand_path('../../default.yml', __dir__)
+      config = ::RuboCop::ConfigLoader.load_file(config_path)
+      ::RuboCop::ConfigLoader.merge_with_default(config, config_path)
     end
 
     # @return [Array<Hash>]
