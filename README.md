@@ -1,5 +1,7 @@
 # Slimcop
 
+[![test](https://github.com/r7kamura/slimcop/actions/workflows/test.yml/badge.svg)](https://github.com/r7kamura/slimcop/actions/workflows/test.yml)
+
 [RuboCop](https://github.com/rubocop/rubocop) runner for [Slim template](https://github.com/slim-template/slim).
 
 ## Installation
