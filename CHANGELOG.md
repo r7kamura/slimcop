@@ -1,5 +1,7 @@
-## [Unreleased]
+# Changelog
 
-## [0.1.0] - 2021-12-15
+## Unreleased
 
-- Initial release
+## 0.1.0 - 2021-12-21
+
+- Initial release.
