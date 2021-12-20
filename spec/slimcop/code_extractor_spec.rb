@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Slimcop::Extractor do
+RSpec.describe Slimcop::CodeExtractor do
   describe '#call' do
     subject do
       described_class.new(

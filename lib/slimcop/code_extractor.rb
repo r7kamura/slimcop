@@ -3,8 +3,8 @@
 require 'slimi'
 
 module Slimcop
-  # Convert Slimi AST into embedded Ruby code info.
-  class Extractor
+  # Extract codes from Slim source.
+  class CodeExtractor
     # @param [String] source
     def initialize(source:)
       @source = source

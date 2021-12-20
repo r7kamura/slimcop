@@ -24,7 +24,7 @@ module Slimcop
 
     # @return [Array<Hash>]
     def snippets
-      Extractor.new(source: source).call
+      CodeExtractor.new(source: source).call
     end
 
     # @return [String]
