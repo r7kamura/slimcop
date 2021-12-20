@@ -3,13 +3,15 @@
 require 'rubocop/cop/legacy/corrector'
 
 module Slimcop
-  # Apply given offenses' auto-corrections to specified file.
+  # Apply auto-corrections to Slim file.
   class Corrector
     # @param [String] file_path
     # @param [Array<Hash>] offenses
-    def initialize(file_path:, offenses:)
+    # @param [String] source
+    def initialize(file_path:, offenses:, source:)
       @file_path = file_path
       @offenses = offenses
+      @source = source
     end
 
     def call
@@ -31,7 +33,7 @@ module Slimcop
     def source_buffer
       ::Parser::Source::Buffer.new(
         @file_path,
-        source: ::File.read(@file_path)
+        source: @source
       )
     end
   end

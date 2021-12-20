@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Slimcop
-  # Report offenses in the specified Slim file, and apply auto-corrections if required.
+  # Report offenses in Slim file, and apply auto-corrections if required.
   class Runner
     # @param [String] file_path
     # @param [RuboCop::Config] rubocop_config
