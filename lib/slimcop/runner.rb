@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Slimcop
+  # Collect RuboCop offenses from Slim file.
   class Runner
     # @param [String] file_path
     # @param [RuboCop::Config] rubocop_config
@@ -9,14 +10,19 @@ module Slimcop
       @rubocop_config = rubocop_config
     end
 
-    # @return [Array<RuboCop::Cop::Offense]
+    # @return [Array<Hash>]
     def call
       snippets.flat_map do |snippet|
         OffenseCollector.new(
           file_path: @file_path,
           rubocop_config: @rubocop_config,
           ruby_code: snippet[:code]
-        ).call.offenses
+        ).call.offenses.map do |offense|
+          {
+            offense: offense,
+            offset: snippet[:begin_]
+          }
+        end
       end
     end
 
