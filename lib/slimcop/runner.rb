@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rubocop'
+
 module Slimcop
   # Report offenses in Slim file, and apply auto-corrections if required.
   class Runner
