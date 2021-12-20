@@ -3,7 +3,8 @@
 require 'rubocop'
 
 module Slimcop
-  class Investigate
+  # Collect RuboCop offenses from Ruby code.
+  class OffenseCollector
     # @param [String] ruby_code
     # @param [String] file_path
     # @param [RuboCop::Config] rubocop_config

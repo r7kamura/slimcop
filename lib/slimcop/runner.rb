@@ -12,7 +12,7 @@ module Slimcop
     # @return [Array]
     def call
       snippets.flat_map do |snippet|
-        Investigate.new(
+        OffenseCollector.new(
           file_path: @file_path,
           rubocop_config: @rubocop_config,
           ruby_code: snippet[:code]

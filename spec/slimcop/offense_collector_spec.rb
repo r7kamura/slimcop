@@ -2,7 +2,7 @@
 
 require 'rubocop'
 
-RSpec.describe Slimcop::Investigate do
+RSpec.describe Slimcop::OffenseCollector do
   describe '#call' do
     subject do
       described_class.new(
