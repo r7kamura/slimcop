@@ -11,12 +11,21 @@ module Slimcop
 
     def call
       options = parse!
-      runner = Runner.new(
-        file_path: @argv.first,
-        rubocop_config: RuboCop::ConfigLoader.default_configuration
-      )
-      p runner.offenses
-      runner.auto_correct if options[:auto_correct]
+      rubocop_config = RuboCop::ConfigLoader.default_configuration
+      @argv.each do |slim_file_path|
+        runner = Runner.new(
+          file_path: slim_file_path,
+          rubocop_config: rubocop_config
+        )
+        if options[:auto_correct]
+          puts runner.auto_correct
+        else
+          messages = runner.offenses.map do |offense|
+            offense[:rubocop_offense].message
+          end
+          puts messages
+        end
+      end
     end
 
     private
