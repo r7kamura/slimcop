@@ -2,13 +2,13 @@
 
 require 'rubocop'
 
-RSpec.describe Slimcop::OffenseCollector do
+RSpec.describe Slimcop::RubyOffenseCollector do
   describe '#call' do
     subject do
       described_class.new(
         file_path: 'dummy.slim',
         rubocop_config: RuboCop::ConfigLoader.default_configuration,
-        ruby_code: 'dummy'
+        source: 'dummy'
       ).call
     end
 

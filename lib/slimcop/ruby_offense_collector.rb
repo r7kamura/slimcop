@@ -4,14 +4,14 @@ require 'rubocop'
 
 module Slimcop
   # Collect RuboCop offenses from Ruby code.
-  class OffenseCollector
-    # @param [String] ruby_code
+  class RubyOffenseCollector
     # @param [String] file_path
     # @param [RuboCop::Config] rubocop_config
-    def initialize(file_path:, rubocop_config:, ruby_code:)
+    # @param [String] source
+    def initialize(file_path:, rubocop_config:, source:)
       @file_path = file_path
       @rubocop_config = rubocop_config
-      @ruby_code = ruby_code
+      @source = source
     end
 
     # @return [Array<RuboCop::Cop::Offense>, nil]
@@ -26,7 +26,7 @@ module Slimcop
     # @return [RuboCop::ProcessedSource]
     def rubocop_processed_source
       @rubocop_processed_source ||= ::RuboCop::ProcessedSource.new(
-        @ruby_code,
+        @source,
         @rubocop_config.target_ruby_version,
         @file_path
       )
