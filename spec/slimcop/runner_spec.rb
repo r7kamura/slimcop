@@ -3,12 +3,26 @@
 require 'rubocop'
 
 RSpec.describe Slimcop::Runner do
-  describe '#call' do
+  let(:runner) do
+    described_class.new(
+      file_path: 'spec/fixtures/dummy.slim',
+      rubocop_config: RuboCop::ConfigLoader.default_configuration
+    )
+  end
+
+  describe '#auto_correct' do
     subject do
-      described_class.new(
-        file_path: 'spec/fixtures/dummy.slim',
-        rubocop_config: RuboCop::ConfigLoader.default_configuration
-      ).call
+      runner.auto_correct
+    end
+
+    it do
+      skip # TODO
+    end
+  end
+
+  describe '#offenses' do
+    subject do
+      runner.offenses
     end
 
     it do

@@ -11,10 +11,18 @@ module Slimcop
     end
 
     # @return [Array<Hash>]
-    def call
-      SlimOffenseCollector.new(
+    def offenses
+      @offenses ||= SlimOffenseCollector.new(
         file_path: @file_path,
         rubocop_config: @rubocop_config,
+        source: source
+      ).call
+    end
+
+    def auto_correct
+      SlimCorrector.new(
+        file_path: @file_path,
+        offenses: offenses,
         source: source
       ).call
     end
