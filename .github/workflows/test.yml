@@ -1,21 +1,18 @@
-name: Ruby
+name: test
 
 on:
+  pull_request:
   push:
     branches:
       - master
 
-  pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         ruby:
           - 2.7.2
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
