@@ -31,5 +31,6 @@ Gem::Specification.new do |spec|
     'rubygems_mfa_required' => 'true'
   }
 
+  spec.add_dependency 'rubocop', '>= 0.87'
   spec.add_dependency 'slimi'
 end
