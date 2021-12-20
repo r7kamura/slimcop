@@ -30,6 +30,6 @@ Use `slimcop` executable to check offenses and auto-correct them.
 
 ```console
 $ slimcop --help
-Usage: slimcop [options]
+Usage: slimcop [options] [file1, file2, ...]
     -a, --auto-correct               Auto-correct offenses.
 ```
