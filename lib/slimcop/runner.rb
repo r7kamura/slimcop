@@ -9,7 +9,7 @@ module Slimcop
       @rubocop_config = rubocop_config
     end
 
-    # @return [Array]
+    # @return [Array<RuboCop::Cop::Offense]
     def call
       snippets.flat_map do |snippet|
         OffenseCollector.new(
