@@ -22,7 +22,7 @@ module Slimcop
     def corrections
       @offenses.map do |offense|
         lambda do |corrector|
-          corrector.import!(offense[:offense].corrector, offset: offense[:offset])
+          corrector.import!(offense[:rubocop_offense].corrector, offset: offense[:offset])
         end
       end
     end

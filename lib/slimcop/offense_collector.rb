@@ -14,11 +14,11 @@ module Slimcop
       @ruby_code = ruby_code
     end
 
-    # @return [RuboCop::Cop::Commissioner::InvestigationReport, nil]
+    # @return [Array<RuboCop::Cop::Offense>, nil]
     def call
       return unless rubocop_processed_source.valid_syntax?
 
-      rubocop_team.investigate(rubocop_processed_source)
+      rubocop_team.investigate(rubocop_processed_source).offenses
     end
 
     private

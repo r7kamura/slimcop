@@ -13,7 +13,7 @@ RSpec.describe Slimcop::OffenseCollector do
     end
 
     it do
-      is_expected.to be_a(RuboCop::Cop::Commissioner::InvestigationReport)
+      is_expected.to be_a(Array)
     end
   end
 end

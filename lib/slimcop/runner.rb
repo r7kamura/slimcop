@@ -17,10 +17,10 @@ module Slimcop
           file_path: @file_path,
           rubocop_config: @rubocop_config,
           ruby_code: snippet[:code]
-        ).call.offenses.map do |offense|
+        ).call.map do |rubocop_offense|
           {
-            offense: offense,
-            offset: snippet[:begin_]
+            offset: snippet[:begin_],
+            rubocop_offense: rubocop_offense
           }
         end
       end
