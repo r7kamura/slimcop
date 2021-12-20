@@ -2,7 +2,7 @@
 
 require 'rubocop'
 
-RSpec.describe Slimcop::Corrector do
+RSpec.describe Slimcop::SlimCorrector do
   describe '#call' do
     subject do
       described_class.new(
@@ -19,7 +19,7 @@ RSpec.describe Slimcop::Corrector do
     let(:offenses) do
       Slimcop::Runner.new(
         file_path: file_path,
-        rubocop_config: RuboCop::ConfigLoader.default_configuration,
+        rubocop_config: RuboCop::ConfigLoader.default_configuration
       ).call
     end
 
@@ -28,7 +28,7 @@ RSpec.describe Slimcop::Corrector do
     end
 
     it do
-      puts subject
+      subject
     end
   end
 end

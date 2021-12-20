@@ -4,7 +4,7 @@ require 'rubocop/cop/legacy/corrector'
 
 module Slimcop
   # Apply auto-corrections to Slim file.
-  class Corrector
+  class SlimCorrector
     # @param [String] file_path
     # @param [Array<Hash>] offenses
     # @param [String] source
