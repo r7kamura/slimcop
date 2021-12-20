@@ -4,7 +4,7 @@ require 'slimi'
 
 module Slimcop
   # Extract codes from Slim source.
-  class CodeExtractor
+  class RubyExtractor
     # @param [String] source
     def initialize(source:)
       @source = source

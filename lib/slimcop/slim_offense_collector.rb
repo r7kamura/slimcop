@@ -32,7 +32,7 @@ module Slimcop
 
     # @return [Array<Hash>]
     def snippets
-      CodeExtractor.new(source: @source).call
+      RubyExtractor.new(source: @source).call
     end
   end
 end
