@@ -14,6 +14,7 @@ module Slimcop
       @source = source
     end
 
+    # @return [String] Rewritten Slim code.
     def call
       ::RuboCop::Cop::Legacy::Corrector.new(source_buffer, corrections).rewrite
     end

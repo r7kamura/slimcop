@@ -16,7 +16,10 @@ module Slimcop
           file_path: slim_file_path
         )
         if options[:auto_correct]
-          puts runner.auto_correct
+          ::File.write(
+            slim_file_path,
+            runner.auto_correct
+          )
         else
           messages = runner.offenses.map do |offense|
             offense[:rubocop_offense].message
