@@ -38,7 +38,7 @@ module Slimcop
 
     # @return [String]
     def source
-      ::File.read(@file_path)
+      @source ||= ::File.read(@file_path)
     end
   end
 end
