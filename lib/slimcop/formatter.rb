@@ -19,13 +19,13 @@ module Slimcop
     # @return [String]
     def format_offense(offense)
       format(
-        '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<correctability>s%<message>s',
+        '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<status>s%<message>s',
         column: offense.real_column,
-        correctability: correctability(offense),
         file_path: file_path(offense),
         line: offense.line,
         message: offense.message,
-        severity_code: severity_code(offense)
+        severity_code: severity_code(offense),
+        status: status(offense)
       )
     end
 
@@ -40,16 +40,6 @@ module Slimcop
 
     # @param [Slimcop::Offense] offense
     # @return [String]
-    def correctability(offense)
-      if offense.correctable?
-        "#{Rainbow('[Correctable]').yellow} "
-      else
-        ''
-      end
-    end
-
-    # @param [Slimcop::Offense] offense
-    # @return [String]
     def file_path(offense)
       Rainbow(canonicalize_path(offense.file_path)).cyan
     end
@@ -58,6 +48,20 @@ module Slimcop
     # @return [String]
     def severity_code(offense)
       Rainbow(offense.severity.code).color(COLOR_FOR_SEVERITY_CODE[offense.severity.name])
+    end
+
+    # @param [Slimcop::Offense] offense
+    # @return [String]
+    def status(offense)
+      if offense.rubocop_offense.corrected_with_todo?
+        Rainbow('[Todo] ').green
+      elsif offense.rubocop_offense.corrected?
+        Rainbow('[Corrected] ').green
+      elsif offense.rubocop_offense.correctable?
+        Rainbow('[Correctable] ').yellow
+      else
+        ''
+      end
     end
   end
 end

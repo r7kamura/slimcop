@@ -5,10 +5,12 @@ require 'rubocop'
 module Slimcop
   # Collect RuboCop offenses from Ruby code.
   class RubyOffenseCollector
+    # @param [Boolean] auto_correct
     # @param [String] file_path
     # @param [RuboCop::Config] rubocop_config
     # @param [String] source
-    def initialize(file_path:, rubocop_config:, source:)
+    def initialize(auto_correct:, file_path:, rubocop_config:, source:)
+      @auto_correct = auto_correct
       @file_path = file_path
       @rubocop_config = rubocop_config
       @source = source
@@ -37,7 +39,7 @@ module Slimcop
       ::RuboCop::Cop::Team.new(
         ::RuboCop::Cop::Registry.new(::RuboCop::Cop::Cop.all),
         @rubocop_config,
-        auto_correct: true,
+        auto_correct: @auto_correct,
         display_cop_names: true,
         extra_details: true,
         stdin: ''

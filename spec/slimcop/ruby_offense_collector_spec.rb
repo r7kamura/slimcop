@@ -6,6 +6,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
   describe '#call' do
     subject do
       described_class.new(
+        auto_correct: false,
         file_path: 'dummy.slim',
         rubocop_config: RuboCop::ConfigLoader.default_configuration,
         source: 'dummy'

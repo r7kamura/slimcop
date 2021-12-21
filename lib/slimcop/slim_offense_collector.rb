@@ -3,10 +3,12 @@
 module Slimcop
   # Collect RuboCop offenses from Slim code.
   class SlimOffenseCollector
+    # @param [Boolean] auto_correct
     # @param [String] file_path Slim file path
     # @param [RuboCop::Config] rubocop_config
     # @param [String] source Slim code
-    def initialize(file_path:, rubocop_config:, source:)
+    def initialize(auto_correct:, file_path:, rubocop_config:, source:)
+      @auto_correct = auto_correct
       @file_path = file_path
       @rubocop_config = rubocop_config
       @source = source
@@ -16,6 +18,7 @@ module Slimcop
     def call
       snippets.flat_map do |snippet|
         RubyOffenseCollector.new(
+          auto_correct: @auto_correct,
           file_path: @file_path,
           rubocop_config: @rubocop_config,
           source: snippet[:code]

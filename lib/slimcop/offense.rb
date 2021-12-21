@@ -7,6 +7,9 @@ module Slimcop
     # @return [Integer]
     attr_reader :offset
 
+    # @return [RuboCop::Cop::Offense]
+    attr_reader :rubocop_offense
+
     # @param [Integer] offset
     # @param [RuboCop::Cop::Offense] rubocop_offense
     # @param [String] source Slim code.
@@ -14,11 +17,6 @@ module Slimcop
       @offset = offset
       @rubocop_offense = rubocop_offense
       @source = source
-    end
-
-    # @return [Boolean]
-    def correctable?
-      @rubocop_offense.correctable?
     end
 
     # @return [RuboCop::Cop::Corrector]

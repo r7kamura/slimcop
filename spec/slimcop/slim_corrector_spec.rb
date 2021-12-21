@@ -16,6 +16,7 @@ RSpec.describe Slimcop::SlimCorrector do
 
     let(:offenses) do
       Slimcop::SlimOffenseCollector.new(
+        auto_correct: false,
         file_path: file_path,
         rubocop_config: rubocop_config,
         source: source

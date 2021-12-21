@@ -16,7 +16,7 @@ module Slimcop
 
       Rainbow.enabled = options[:color] if options.key?(:color)
 
-      offenses_set = investigate(slim_file_paths)
+      offenses_set = investigate(auto_correct: options[:auto_correct], slim_file_paths: slim_file_paths)
       correct(offenses_set) if options[:auto_correct]
       offenses = offenses_set.flat_map { |(_, _, array)| array }
       report(offenses)
@@ -37,12 +37,14 @@ module Slimcop
       end
     end
 
+    # @param [Boolean] auto_correct
     # @param [Array] slim_file_paths
     # @return [Array]
-    def investigate(slim_file_paths)
+    def investigate(auto_correct:, slim_file_paths:)
       slim_file_paths.map do |file_path|
         source = ::File.read(file_path)
         offenses = SlimOffenseCollector.new(
+          auto_correct: auto_correct,
           file_path: file_path,
           rubocop_config: @configuration.rubocop_config,
           source: source
