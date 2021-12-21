@@ -1,22 +1,13 @@
 # frozen_string_literal: true
 
-require 'optparse'
 require 'rainbow'
 
 module Slimcop
   class Cli
-    COLOR_FOR_SEVERITY_CODE = {
-      convention: :yellow,
-      error: :red,
-      fatal: :red,
-      info: :gray,
-      refactor: :yellow,
-      warning: :magenta
-    }.freeze
-
     def initialize(argv)
       @argv = argv.dup
       @configuration = Configuration.new
+      @formatter = Formatter.new
     end
 
     def call
@@ -61,15 +52,7 @@ module Slimcop
     # @param [Array<Slimcop::Offense>] offenses
     def report(offenses)
       lines = offenses.map do |offense|
-        format(
-          '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<correctability>s%<message>s',
-          column: offense.real_column,
-          correctability: offense.correctable? ? Rainbow('[Correctable] ').yellow : '',
-          file_path: Rainbow(offense.file_path).cyan,
-          line: offense.line,
-          message: offense.message,
-          severity_code: Rainbow(offense.severity.code).color(COLOR_FOR_SEVERITY_CODE[offense.severity.name])
-        )
+        @formatter.format_offense(offense)
       end
       puts(lines)
     end
