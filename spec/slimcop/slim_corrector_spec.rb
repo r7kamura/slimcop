@@ -17,9 +17,15 @@ RSpec.describe Slimcop::SlimCorrector do
     end
 
     let(:offenses) do
-      Slimcop::Runner.new(
-        file_path: file_path
-      ).offenses
+      Slimcop::SlimOffenseCollector.new(
+        file_path: file_path,
+        rubocop_config: rubocop_config,
+        source: source
+      ).call
+    end
+
+    let(:rubocop_config) do
+      Slimcop::Configuration.new.rubocop_config
     end
 
     let(:source) do
