@@ -33,4 +33,5 @@ Use `slimcop` executable to check offenses and auto-correct them.
 $ slimcop --help
 Usage: slimcop [options] [file1, file2, ...]
     -a, --auto-correct               Auto-correct offenses.
+        --[no-]color                 Force color output on or off.
 ```

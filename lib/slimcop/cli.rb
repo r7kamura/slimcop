@@ -14,6 +14,8 @@ module Slimcop
       options = parse!
       slim_file_paths = @argv
 
+      Rainbow.enabled = options[:color] if options.key?(:color)
+
       offenses_set = investigate(slim_file_paths)
       correct(offenses_set) if options[:auto_correct]
       offenses = offenses_set.flat_map { |(_, _, array)| array }
@@ -64,6 +66,9 @@ module Slimcop
       parser.banner = 'Usage: slimcop [options] [file1, file2, ...]'
       parser.on('-a', '--auto-correct', 'Auto-correct offenses.') do
         options[:auto_correct] = true
+      end
+      parser.on('--[no-]color', 'Force color output on or off.') do |value|
+        options[:color] = value
       end
       parser.parse!(@argv)
       options

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'optparse'
+require 'rainbow'
 
 module Slimcop
   # Format String for CLI output.
