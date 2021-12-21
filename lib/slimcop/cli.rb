@@ -52,11 +52,12 @@ module Slimcop
     def report(offenses)
       lines = offenses.map do |offense|
         format(
-          '%<file_path>s:%<line>s:%<column>s %<message>s',
+          '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<message>s',
+          column: offense.real_column,
           file_path: offense.file_path,
           line: offense.line,
-          column: offense.real_column,
-          message: offense.message
+          message: offense.message,
+          severity_code: offense.severity_code
         )
       end
       puts(lines)

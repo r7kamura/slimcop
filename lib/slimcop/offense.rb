@@ -41,6 +41,11 @@ module Slimcop
       range.column + 1
     end
 
+    # @return [String]
+    def severity_code
+      @rubocop_offense.severity.code
+    end
+
     private
 
     # @return [Parser::Source::Buffer]
