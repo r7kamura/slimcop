@@ -21,7 +21,7 @@ module Slimcop
         '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<correctability>s%<message>s',
         column: offense.real_column,
         correctability: correctability(offense),
-        file_path: Rainbow(offense.file_path).cyan,
+        file_path: file_path(offense),
         line: offense.line,
         message: offense.message,
         severity_code: severity_code(offense)
@@ -29,6 +29,13 @@ module Slimcop
     end
 
     private
+
+    # @param [String] path e.g. "./spec/fixtures/dummy.slim"
+    # @return [String]
+    # @example "spec/fixtures/dummy.slim"
+    def canonicalize_path(path)
+      ::File.expand_path(path).delete_prefix("#{::Dir.pwd}/")
+    end
 
     # @param [Slimcop::Offense] offense
     # @return [String]
@@ -38,6 +45,12 @@ module Slimcop
       else
         ''
       end
+    end
+
+    # @param [Slimcop::Offense] offense
+    # @return [String]
+    def file_path(offense)
+      Rainbow(canonicalize_path(offense.file_path)).cyan
     end
 
     # @param [Slimcop::Offense] offense
