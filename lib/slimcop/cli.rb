@@ -55,10 +55,15 @@ module Slimcop
 
     # @param [Array<Slimcop::Offense>] offenses
     def report(offenses)
-      lines = offenses.map do |offense|
-        @formatter.format_offense(offense)
+      result = +''
+      unless offenses.empty?
+        result << "\nOffenses:\n\n"
+        lines = offenses.map do |offense|
+          @formatter.format_offense(offense)
+        end
+        result << lines.join("\n")
       end
-      puts(lines)
+      puts(result)
     end
 
     # @return [Hash]
