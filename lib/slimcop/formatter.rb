@@ -19,7 +19,7 @@ module Slimcop
     # @return [String]
     def format_offense(offense)
       format(
-        '%<file_path>s:%<line>i:%<column>i %<severity_code>s: %<status>s%<message>s',
+        '%<file_path>s:%<line>d:%<column>d %<severity_code>s: %<status>s%<message>s',
         column: offense.real_column,
         file_path: file_path(offense),
         line: offense.line,
