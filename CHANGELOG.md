@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Add --color and --no-color option.
+
 ### Changed
 
 - Improve offenses CLI output format.
