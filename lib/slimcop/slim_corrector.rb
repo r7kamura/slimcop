@@ -7,7 +7,7 @@ module Slimcop
   # Apply auto-corrections to Slim file.
   class SlimCorrector
     # @param [String] file_path
-    # @param [Array<Hash>] offenses
+    # @param [Array<Slimcop::Offense>] offenses
     # @param [String] source
     def initialize(file_path:, offenses:, source:)
       @file_path = file_path
@@ -26,7 +26,7 @@ module Slimcop
     def corrections
       @offenses.map do |offense|
         lambda do |corrector|
-          corrector.import!(offense[:rubocop_offense].corrector, offset: offense[:offset])
+          corrector.import!(offense.corrector, offset: offense.offset)
         end
       end
     end

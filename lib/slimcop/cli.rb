@@ -20,10 +20,16 @@ module Slimcop
             runner.auto_correct
           )
         else
-          messages = runner.offenses.map do |offense|
-            offense[:rubocop_offense].message
+          lines = runner.offenses.map do |offense|
+            format(
+              '%<file_path>s:%<line>s:%<column>s %<message>s',
+              file_path: offense.file_path,
+              line: offense.line,
+              column: offense.real_column,
+              message: offense.message
+            )
           end
-          puts messages
+          puts lines
         end
       end
     end

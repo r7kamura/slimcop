@@ -4,6 +4,7 @@ require_relative 'slimcop/version'
 
 module Slimcop
   autoload :Cli, 'slimcop/cli'
+  autoload :Offense, 'slimcop/offense'
   autoload :RubyExtractor, 'slimcop/ruby_extractor'
   autoload :RubyOffenseCollector, 'slimcop/ruby_offense_collector'
   autoload :Runner, 'slimcop/runner'

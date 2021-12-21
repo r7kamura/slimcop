@@ -10,7 +10,7 @@ module Slimcop
       @file_path = file_path
     end
 
-    # @return [Array<Hash>]
+    # @return [Array<Slimcop::Offense>]
     def offenses
       @offenses ||= SlimOffenseCollector.new(
         file_path: @file_path,

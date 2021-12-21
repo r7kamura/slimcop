@@ -12,7 +12,7 @@ module Slimcop
       @source = source
     end
 
-    # @return [Array<Hash>]
+    # @return [Array<Slimcop::Offense>]
     def call
       snippets.flat_map do |snippet|
         RubyOffenseCollector.new(
@@ -20,10 +20,11 @@ module Slimcop
           rubocop_config: @rubocop_config,
           source: snippet[:code]
         ).call.map do |rubocop_offense|
-          {
+          Offense.new(
             offset: snippet[:begin_],
-            rubocop_offense: rubocop_offense
-          }
+            rubocop_offense: rubocop_offense,
+            source: @source
+          )
         end
       end
     end
