@@ -12,7 +12,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       ).call
     end
 
-    it do
+    it 'collects offenses from given Ruby code' do
       is_expected.to be_a(Array)
     end
   end
