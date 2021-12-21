@@ -46,7 +46,7 @@ module Slimcop
       range.column + 1
     end
 
-    # @return [RuboCop::Severity]
+    # @return [RuboCop::Cop::Severity]
     def severity
       @rubocop_offense.severity
     end
