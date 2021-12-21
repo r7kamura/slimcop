@@ -16,6 +16,11 @@ module Slimcop
       @source = source
     end
 
+    # @return [Boolean]
+    def correctable?
+      @rubocop_offense.correctable?
+    end
+
     # @return [RuboCop::Cop::Corrector]
     def corrector
       @rubocop_offense.corrector
@@ -41,9 +46,9 @@ module Slimcop
       range.column + 1
     end
 
-    # @return [String]
-    def severity_code
-      @rubocop_offense.severity.code
+    # @return [RuboCop::Severity]
+    def severity
+      @rubocop_offense.severity
     end
 
     private
