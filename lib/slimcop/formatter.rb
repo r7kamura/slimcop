@@ -19,13 +19,12 @@ module Slimcop
     # @return [String]
     def format_offense(offense)
       format(
-        '%<file_path>s:%<line>d:%<column>d %<severity_code>s: %<status>s%<message>s',
+        '%<path>s:%<line>d:%<column>d %<severity>s: %<message>s',
         column: offense.real_column,
-        file_path: file_path(offense),
         line: offense.line,
-        message: offense.message,
-        severity_code: severity_code(offense),
-        status: status(offense)
+        message: message(offense),
+        path: file_path(offense),
+        severity: severity(offense)
       )
     end
 
@@ -46,7 +45,13 @@ module Slimcop
 
     # @param [Slimcop::Offense] offense
     # @return [String]
-    def severity_code(offense)
+    def message(offense)
+      "#{status(offense)}#{offense.message}"
+    end
+
+    # @param [Slimcop::Offense] offense
+    # @return [String]
+    def severity(offense)
       Rainbow(offense.severity.code).color(COLOR_FOR_SEVERITY_CODE[offense.severity.name])
     end
 
