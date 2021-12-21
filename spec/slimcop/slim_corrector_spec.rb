@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rubocop'
-
 RSpec.describe Slimcop::SlimCorrector do
   describe '#call' do
     subject do
