@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2021-12-21
+
 ### Added
 
 - Add --color and --no-color option.
