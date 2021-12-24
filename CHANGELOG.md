@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix bug on parsing invalid syntax Ruby code.
+
 ## 0.3.0 - 2021-12-25
 
 ### Added

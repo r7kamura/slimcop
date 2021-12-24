@@ -16,9 +16,10 @@ module Slimcop
       @source = source
     end
 
-    # @return [Array<RuboCop::Cop::Offense>, nil]
+    # @return [Array<RuboCop::Cop::Offense>]
     def call
-      return unless rubocop_processed_source.valid_syntax?
+      # Skip if invalid syntax Ruby code is given. (e.g. "- if a?")
+      return [] unless rubocop_processed_source.valid_syntax?
 
       rubocop_team.investigate(rubocop_processed_source).offenses
     end
