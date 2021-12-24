@@ -6,6 +6,10 @@
 
 - Show Slim file path on Slim syntax error.
 
+### Changed
+
+- Require slimi >= 0.4 for :file option handling.
+
 ## 0.2.0 - 2021-12-21
 
 ### Added
