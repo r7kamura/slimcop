@@ -36,7 +36,10 @@ module Slimcop
 
     # @return [Array<Hash>]
     def snippets
-      RubyExtractor.new(source: @source).call
+      RubyExtractor.new(
+        file_path: @file_path,
+        source: @source
+      ).call
     end
   end
 end

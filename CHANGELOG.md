@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Show Slim file path on Slim syntax error.
+
 ## 0.2.0 - 2021-12-21
 
 ### Added

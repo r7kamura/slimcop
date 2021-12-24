@@ -5,8 +5,10 @@ require 'slimi'
 module Slimcop
   # Extract codes from Slim source.
   class RubyExtractor
+    # @param [String, nil] file_path
     # @param [String] source
-    def initialize(source:)
+    def initialize(file_path:, source:)
+      @file_path = file_path
       @source = source
     end
 
@@ -26,7 +28,7 @@ module Slimcop
     # @return [Array] Slim AST, represented in S-expression.
     def ast
       ::Slimi::Filters::Interpolation.new.call(
-        ::Slimi::Parser.new.call(@source)
+        ::Slimi::Parser.new(file: @file_path).call(@source)
       )
     end
 
