@@ -4,7 +4,7 @@ require 'pathname'
 
 module Slimcop
   # Collect file paths from given path patterns.
-  class FileCollector
+  class PathFinder
     # @param [Array<String>] patterns Patterns normally given as CLI arguments (e.g. `["app/views/**/*.html.slim"]`).
     def initialize(patterns:)
       @patterns = patterns

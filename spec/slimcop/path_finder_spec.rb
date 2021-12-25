@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Slimcop::FileCollector do
+RSpec.describe Slimcop::PathFinder do
   describe '#call' do
     subject do
       described_class.new(
