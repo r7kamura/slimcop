@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Support glob pattern on arguments of executable.
+
 ### Fixed
 
 - Fix bug on parsing invalid syntax Ruby code.

@@ -35,3 +35,14 @@ Usage: slimcop [options] [file1, file2, ...]
     -a, --auto-correct               Auto-correct offenses.
         --[no-]color                 Force color output on or off.
 ```
+
+### Example
+
+```console
+$ slimcop spec/**/*.slim
+
+Offenses:
+
+spec/fixtures/dummy.slim:1:3 C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+spec/fixtures/dummy.slim:3:5 C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+```

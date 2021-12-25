@@ -12,7 +12,7 @@ module Slimcop
 
     def call
       options = parse!
-      slim_file_paths = @argv
+      slim_file_paths = FileCollector.new(patterns: @argv).call
 
       Rainbow.enabled = options[:color] if options.key?(:color)
 
