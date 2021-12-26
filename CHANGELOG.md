@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Ignore Lint/EmptyFile by default.
+
 ### Fixed
 
 - Fix NoMethodError on some RuboCop offenses.

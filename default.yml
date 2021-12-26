@@ -10,6 +10,9 @@ Layout/BlockAlignment:
 Layout/ClosingParenthesisIndentation:
   Enabled: false
 
+Lint/EmptyFile:
+  Enabled: false
+
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
