@@ -21,7 +21,7 @@ RSpec.describe Slimcop::RubyExtractor do
       SLIM
     end
 
-    context 'on valid case' do
+    context 'with valid condition' do
       it 'extracts Ruby codes and their location from given Slim code' do
         is_expected.to eq(
           [
