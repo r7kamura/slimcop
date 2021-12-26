@@ -24,7 +24,7 @@ module Slimcop
 
     # @return [Array<Proc>]
     def corrections
-      @offenses.map do |offense|
+      @offenses.select(&:corrector).map do |offense|
         lambda do |corrector|
           corrector.import!(offense.corrector, offset: offense.offset)
         end
