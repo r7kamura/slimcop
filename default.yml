@@ -79,6 +79,9 @@ Layout/TrailingEmptyLines:
 Layout/TrailingWhitespace:
   Enabled: false
 
+Lint/UselessAssignment:
+  Enabled: false
+
 Lint/Void:
   Enabled: false
 

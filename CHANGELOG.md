@@ -6,13 +6,14 @@
 
 - Not investigate all files then auto-correct them, but do it for each file.
 - Sort processed files in alphabetical order.
+- Disable Lint/UselessAssignment by default.
 
 ## 0.5.0 - 2021-12-27
 
 ### Changed
 
-- Ignore Lint/EmptyFile by default.
-- Ignore Style/RescueModifier by default.
+- Disable Lint/EmptyFile by default.
+- Disable Style/RescueModifier by default.
 
 ### Fixed
 
