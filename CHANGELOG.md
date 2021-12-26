@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.5.0 - 2021-12-27
+
 ### Changed
 
 - Ignore Lint/EmptyFile by default.
