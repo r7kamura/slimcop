@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix NoMethodError on some RuboCop offenses.
+
 ## 0.4.0 - 2021-12-26
 
 ### Added

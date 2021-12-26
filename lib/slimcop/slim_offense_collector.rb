@@ -24,6 +24,7 @@ module Slimcop
           source: snippet[:code]
         ).call.map do |rubocop_offense|
           Offense.new(
+            file_path: @file_path,
             offset: snippet[:begin_],
             rubocop_offense: rubocop_offense,
             source: @source

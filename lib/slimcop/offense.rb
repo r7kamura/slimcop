@@ -4,6 +4,9 @@ require 'parser'
 
 module Slimcop
   class Offense
+    # @return [String]
+    attr_reader :file_path
+
     # @return [Integer]
     attr_reader :offset
 
@@ -13,7 +16,8 @@ module Slimcop
     # @param [Integer] offset
     # @param [RuboCop::Cop::Offense] rubocop_offense
     # @param [String] source Slim code.
-    def initialize(offset:, rubocop_offense:, source:)
+    def initialize(file_path:, offset:, rubocop_offense:, source:)
+      @file_path = file_path
       @offset = offset
       @rubocop_offense = rubocop_offense
       @source = source
@@ -22,11 +26,6 @@ module Slimcop
     # @return [RuboCop::Cop::Corrector]
     def corrector
       @rubocop_offense.corrector
-    end
-
-    # @return [String]
-    def file_path
-      @rubocop_offense.location.source_buffer.name
     end
 
     # @return [Integer]
