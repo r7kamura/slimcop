@@ -14,7 +14,7 @@ module Slimcop
     def call
       @patterns.flat_map do |pattern|
         ::Pathname.glob(pattern).select(&:file?).map(&:to_s)
-      end
+      end.sort
     end
   end
 end

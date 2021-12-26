@@ -5,6 +5,7 @@
 ### Changed
 
 - Change CLI execution order to run auto-correct every file.
+- Change processed files order to alhabetical.
 
 ## 0.5.0 - 2021-12-27
 
