@@ -5,6 +5,7 @@
 ### Changed
 
 - Ignore Lint/EmptyFile by default.
+- Ignore Style/RescueModifier by default.
 
 ### Fixed
 

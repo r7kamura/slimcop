@@ -103,6 +103,9 @@ Style/IfUnlessModifier:
 Style/Next:
   Enabled: false
 
+Style/RescueModifier:
+  Enabled: false
+
 Style/WhileUntilDo:
   Enabled: false
 
