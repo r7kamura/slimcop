@@ -4,8 +4,8 @@
 
 ### Changed
 
-- Change CLI execution order to run auto-correct every file.
-- Change processed files order to alhabetical.
+- Not investigate all files then auto-correct them, but do it for each file.
+- Sort processed files in alphabetical order.
 
 ## 0.5.0 - 2021-12-27
 
