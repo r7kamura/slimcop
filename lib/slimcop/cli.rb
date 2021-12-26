@@ -12,45 +12,54 @@ module Slimcop
 
     def call
       options = parse!
-      slim_file_paths = PathFinder.new(patterns: @argv).call
-
       Rainbow.enabled = options[:color] if options.key?(:color)
 
-      offenses_set = investigate(auto_correct: options[:auto_correct], slim_file_paths: slim_file_paths)
-      correct(offenses_set) if options[:auto_correct]
-      offenses = offenses_set.flat_map { |(_, _, array)| array }
+      file_paths = PathFinder.new(patterns: @argv).call
+      offenses = file_paths.flat_map do |file_path|
+        source = ::File.read(file_path)
+        offenses_ = investigate(
+          auto_correct: options[:auto_correct],
+          file_path: file_path,
+          source: source
+        )
+        if options[:auto_correct]
+          correct(
+            file_path: file_path,
+            offenses: offenses_,
+            source: source
+          )
+        end
+        offenses_
+      end
       report(offenses)
       exit(offenses.empty? ? 0 : 1)
     end
 
     private
 
-    # @param [Array] offenses_set
-    def correct(offenses_set)
-      offenses_set.each do |(file_path, source, offenses)|
-        rewritten_source = SlimCorrector.new(
-          file_path: file_path,
-          offenses: offenses,
-          source: source
-        ).call
-        ::File.write(file_path, rewritten_source)
-      end
+    # @param [String] file_path
+    # @param [Array<Slimcop::Offense>] offenses
+    # @param [String] source
+    def correct(file_path:, offenses:, source:)
+      rewritten_source = SlimCorrector.new(
+        file_path: file_path,
+        offenses: offenses,
+        source: source
+      ).call
+      ::File.write(file_path, rewritten_source)
     end
 
     # @param [Boolean] auto_correct
-    # @param [Array] slim_file_paths
-    # @return [Array]
-    def investigate(auto_correct:, slim_file_paths:)
-      slim_file_paths.map do |file_path|
-        source = ::File.read(file_path)
-        offenses = SlimOffenseCollector.new(
-          auto_correct: auto_correct,
-          file_path: file_path,
-          rubocop_config: @configuration.rubocop_config,
-          source: source
-        ).call
-        [file_path, source, offenses]
-      end
+    # @param [String] file_path
+    # @param [String] source
+    # @return [Array<Slimcop::Offense>]
+    def investigate(auto_correct:, file_path:, source:)
+      SlimOffenseCollector.new(
+        auto_correct: auto_correct,
+        file_path: file_path,
+        rubocop_config: @configuration.rubocop_config,
+        source: source
+      ).call
     end
 
     # @param [Array<Slimcop::Offense>] offenses

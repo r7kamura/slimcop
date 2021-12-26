@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Change CLI execution order to run auto-correct every file.
+
 ## 0.5.0 - 2021-12-27
 
 ### Changed
