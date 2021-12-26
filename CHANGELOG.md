@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.4.0 - 2021-12-26
+
 ### Added
 
 - Support glob pattern on arguments of executable.
