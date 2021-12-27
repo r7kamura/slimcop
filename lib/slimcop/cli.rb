@@ -6,20 +6,21 @@ module Slimcop
   class Cli
     def initialize(argv)
       @argv = argv.dup
-      @configuration = Configuration.new
       @formatter = Formatter.new
     end
 
     def call
       options = parse!
       Rainbow.enabled = options[:color] if options.key?(:color)
-
+      rubocop_config = RuboCopConfigGenerator.new(additional_config_file_path: options[:additional_config_file_path]).call
       file_paths = PathFinder.new(patterns: @argv).call
+
       offenses = file_paths.flat_map do |file_path|
         source = ::File.read(file_path)
         offenses_ = investigate(
           auto_correct: options[:auto_correct],
           file_path: file_path,
+          rubocop_config: rubocop_config,
           source: source
         )
         if options[:auto_correct]
@@ -51,13 +52,14 @@ module Slimcop
 
     # @param [Boolean] auto_correct
     # @param [String] file_path
+    # @param [String] rubocop_config
     # @param [String] source
     # @return [Array<Slimcop::Offense>]
-    def investigate(auto_correct:, file_path:, source:)
+    def investigate(auto_correct:, file_path:, rubocop_config:, source:)
       SlimOffenseCollector.new(
         auto_correct: auto_correct,
         file_path: file_path,
-        rubocop_config: @configuration.rubocop_config,
+        rubocop_config: rubocop_config,
         source: source
       ).call
     end
@@ -82,6 +84,9 @@ module Slimcop
       parser.banner = 'Usage: slimcop [options] [file1, file2, ...]'
       parser.on('-a', '--auto-correct', 'Auto-correct offenses.') do
         options[:auto_correct] = true
+      end
+      parser.on('-c', '--config=', 'Specify configuration file.') do |file_path|
+        options[:additional_config_file_path] = file_path
       end
       parser.on('--[no-]color', 'Force color output on or off.') do |value|
         options[:color] = value

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Add -c, --config CLI option to customize RuboCop config.
+
 ### Changed
 
 - Not investigate all files then auto-correct them, but do it for each file.

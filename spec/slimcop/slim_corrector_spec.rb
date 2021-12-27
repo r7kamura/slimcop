@@ -24,7 +24,7 @@ RSpec.describe Slimcop::SlimCorrector do
     end
 
     let(:rubocop_config) do
-      Slimcop::Configuration.new.rubocop_config
+      Slimcop::RuboCopConfigGenerator.new.call
     end
 
     let(:source) do
