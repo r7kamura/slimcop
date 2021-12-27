@@ -33,13 +33,14 @@ Use `slimcop` executable to check offenses and auto-correct them.
 $ slimcop --help
 Usage: slimcop [options] [file1, file2, ...]
     -a, --auto-correct               Auto-correct offenses.
+    -c, --config=                    Specify configuration file.
         --[no-]color                 Force color output on or off.
 ```
 
 ### Example
 
 ```console
-$ slimcop spec/**/*.slim
+$ slimcop "spec/**/*.slim"
 
 Offenses:
 
