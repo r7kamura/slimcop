@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.6.0 - 2021-12-28
+
 ### Added
 
 - Add -c, --config CLI option to customize RuboCop config.
