@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 require 'rainbow'
+require 'rubocop'
 
 module Slimcop
   class Cli
     def initialize(argv)
       @argv = argv.dup
-      @formatter = Formatter.new
+      @formatter = ::RuboCop::Formatter::ProgressFormatter.new($stdout)
     end
 
     def call
@@ -15,7 +16,9 @@ module Slimcop
       rubocop_config = RuboCopConfigGenerator.new(additional_config_file_path: options[:additional_config_file_path]).call
       file_paths = PathFinder.new(patterns: @argv).call
 
+      @formatter.started(file_paths)
       offenses = file_paths.flat_map do |file_path|
+        @formatter.file_started(file_path, {})
         source = ::File.read(file_path)
         offenses_ = investigate(
           auto_correct: options[:auto_correct],
@@ -30,9 +33,10 @@ module Slimcop
             source: source
           )
         end
+        @formatter.file_finished(file_path, offenses_)
         offenses_
       end
-      report(offenses)
+      @formatter.finished(file_paths)
       exit(offenses.empty? ? 0 : 1)
     end
 
@@ -62,19 +66,6 @@ module Slimcop
         rubocop_config: rubocop_config,
         source: source
       ).call
-    end
-
-    # @param [Array<Slimcop::Offense>] offenses
-    def report(offenses)
-      result = +''
-      unless offenses.empty?
-        result << "\nOffenses:\n\n"
-        lines = offenses.map do |offense|
-          @formatter.format_offense(offense)
-        end
-        result << lines.join("\n")
-      end
-      puts(result)
     end
 
     # @return [Hash]

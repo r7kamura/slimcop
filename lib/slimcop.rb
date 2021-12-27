@@ -4,7 +4,6 @@ require_relative 'slimcop/version'
 
 module Slimcop
   autoload :Cli, 'slimcop/cli'
-  autoload :Formatter, 'slimcop/formatter'
   autoload :Offense, 'slimcop/offense'
   autoload :PathFinder, 'slimcop/path_finder'
   autoload :RuboCopConfigGenerator, 'slimcop/rubo_cop_config_generator'

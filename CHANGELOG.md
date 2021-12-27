@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Re-use RuboCop's progress formatter as our default formatter.
+
 ## 0.6.0 - 2021-12-28
 
 ### Added

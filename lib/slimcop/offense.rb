@@ -1,17 +1,35 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 require 'parser'
+require 'rubocop'
 
 module Slimcop
   class Offense
+    extend ::Forwardable
+
     # @return [String]
     attr_reader :file_path
 
     # @return [Integer]
     attr_reader :offset
 
-    # @return [RuboCop::Cop::Offense]
-    attr_reader :rubocop_offense
+    delegate(
+      %i[
+        column
+        column_length
+        correctable?
+        corrected_with_todo?
+        corrected?
+        corrector
+        highlighted_area
+        line
+        message
+        real_column
+        severity
+      ] => :rubocop_offense_with_real_location
+    )
 
     # @param [Integer] offset
     # @param [RuboCop::Cop::Offense] rubocop_offense
@@ -23,29 +41,13 @@ module Slimcop
       @source = source
     end
 
-    # @return [RuboCop::Cop::Corrector]
-    def corrector
-      @rubocop_offense.corrector
-    end
-
-    # @return [Integer]
-    def line
-      range.line
-    end
-
-    # @return [String]
-    def message
-      @rubocop_offense.message
-    end
-
-    # @return [Integer]
-    def real_column
-      range.column + 1
-    end
-
-    # @return [RuboCop::Cop::Severity]
-    def severity
-      @rubocop_offense.severity
+    # @return [Parser::Source::Range]
+    def location
+      @location ||= ::Parser::Source::Range.new(
+        buffer,
+        @rubocop_offense.location.begin_pos + @offset,
+        @rubocop_offense.location.end_pos + @offset
+      )
     end
 
     private
@@ -58,12 +60,15 @@ module Slimcop
       )
     end
 
-    # @return [Parser::Source::Range]
-    def range
-      @range ||= ::Parser::Source::Range.new(
-        buffer,
-        @rubocop_offense.location.begin_pos + @offset,
-        @rubocop_offense.location.end_pos + @offset
+    # @return [RuboCop::Cop::Offense]
+    def rubocop_offense_with_real_location
+      ::RuboCop::Cop::Offense.new(
+        @rubocop_offense.severity.name,
+        location,
+        @rubocop_offense.message,
+        @rubocop_offense.cop_name,
+        @rubocop_offense.status,
+        @rubocop_offense.corrector
       )
     end
   end
