@@ -26,6 +26,19 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       end
     end
 
+    context 'with rubocop:todo comment' do
+      let(:source) do
+        <<~RUBY
+          "a" \# rubocop:todo Style/StringLiterals
+        RUBY
+      end
+
+      it 'excludes disabled offenses' do
+        is_expected.to be_a(Array)
+        expect(subject.length).to eq(1)
+      end
+    end
+
     context 'with rubocop:disable comment' do
       let(:source) do
         <<~RUBY
