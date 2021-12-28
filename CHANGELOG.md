@@ -5,6 +5,7 @@
 ### Changed
 
 - Use .rubocop.yml by default.
+- Use "**/*.slim" by default.
 
 ### Fixed
 

@@ -41,5 +41,15 @@ RSpec.describe Slimcop::PathFinder do
         is_expected.to be_empty
       end
     end
+
+    context 'with empty patterns' do
+      let(:patterns) do
+        []
+      end
+
+      it 'uses default patterns' do
+        is_expected.to eq(%w[spec/fixtures/dummy.slim])
+      end
+    end
   end
 end
