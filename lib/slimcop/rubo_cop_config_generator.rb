@@ -4,6 +4,8 @@ require 'rubocop'
 
 module Slimcop
   class RuboCopConfigGenerator
+    DEFAULT_ADDITIONAL_CONFIG_PATH = '.rubocop.yml'
+
     # @param [String] additional_config_file_path
     def initialize(additional_config_file_path: nil)
       @additional_config_file_path = additional_config_file_path
@@ -29,13 +31,22 @@ module Slimcop
     # @return [Hash]
     def merged_config_hash
       result = slimcop_default_config
-      result = ::RuboCop::ConfigLoader.merge(result, additional_config) if @additional_config_file_path
+      result = ::RuboCop::ConfigLoader.merge(result, additional_config) if additional_config
       result
     end
 
     # @return [RuboCop::Config, nil]
     def additional_config
-      ::RuboCop::ConfigLoader.load_file(@additional_config_file_path) if @additional_config_file_path
+      if instance_variable_defined?(:@additional_config)
+        @additional_config
+      else
+        @additional_config = \
+          if @additional_config_file_path
+            ::RuboCop::ConfigLoader.load_file(@additional_config_file_path)
+          elsif ::File.exist?(DEFAULT_ADDITIONAL_CONFIG_PATH)
+            ::RuboCop::ConfigLoader.load_file(DEFAULT_ADDITIONAL_CONFIG_PATH)
+          end
+      end
     end
 
     # @return [RuboCop::Config]

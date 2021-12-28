@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Use .rubocop.yml by default.
+
 ### Fixed
 
 - Fix bug that --no-color was not working.
