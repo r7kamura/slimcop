@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.8.0
+
 ### Changed
 
 - Use .rubocop.yml by default.
