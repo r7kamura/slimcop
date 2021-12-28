@@ -40,10 +40,18 @@ Usage: slimcop [options] [file1, file2, ...]
 ### Example
 
 ```console
-$ slimcop "spec/**/*.slim"
+$ slimcop "**/*.slim"
+Inspecting 1 file
+C
 
 Offenses:
 
-spec/fixtures/dummy.slim:1:3 C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
-spec/fixtures/dummy.slim:3:5 C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+spec/fixtures/dummy.slim:1:3: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+- "a"
+  ^^^
+spec/fixtures/dummy.slim:3:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+| #{"c"}
+    ^^^
+
+1 file inspected, 2 offenses detected, 2 offenses auto-correctable
 ```
