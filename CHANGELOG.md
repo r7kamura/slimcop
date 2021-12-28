@@ -7,7 +7,7 @@
 - Exclude disabled offenses.
 - Uniq paths at PathFinder.
 
-### 0.7.0 - 2021-12-28
+## 0.7.0 - 2021-12-28
 
 ### Changed
 
