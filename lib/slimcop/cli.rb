@@ -7,18 +7,17 @@ module Slimcop
   class Cli
     def initialize(argv)
       @argv = argv.dup
-      @formatter = ::RuboCop::Formatter::ProgressFormatter.new($stdout)
     end
 
     def call
       options = parse!
-      Rainbow.enabled = options[:color] if options.key?(:color)
+      formatter = ::RuboCop::Formatter::ProgressFormatter.new($stdout, color: options[:color])
       rubocop_config = RuboCopConfigGenerator.new(additional_config_file_path: options[:additional_config_file_path]).call
       file_paths = PathFinder.new(patterns: @argv).call
 
-      @formatter.started(file_paths)
+      formatter.started(file_paths)
       offenses = file_paths.flat_map do |file_path|
-        @formatter.file_started(file_path, {})
+        formatter.file_started(file_path, {})
         source = ::File.read(file_path)
         offenses_ = investigate(
           auto_correct: options[:auto_correct],
@@ -33,10 +32,10 @@ module Slimcop
             source: source
           )
         end
-        @formatter.file_finished(file_path, offenses_)
+        formatter.file_finished(file_path, offenses_)
         offenses_
       end
-      @formatter.finished(file_paths)
+      formatter.finished(file_paths)
       exit(offenses.empty? ? 0 : 1)
     end
 
