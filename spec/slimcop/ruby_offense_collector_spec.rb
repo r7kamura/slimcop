@@ -26,7 +26,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       end
     end
 
-    context 'with rubocop:disabled comment' do
+    context 'with rubocop:disable comment' do
       let(:source) do
         <<~RUBY
           "a" \# rubocop:disable Style/StringLiterals
