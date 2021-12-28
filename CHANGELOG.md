@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Exclude disabled offenses.
+
 ### 0.7.0 - 2021-12-28
 
 ### Changed

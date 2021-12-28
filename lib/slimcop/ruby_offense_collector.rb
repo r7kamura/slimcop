@@ -21,7 +21,7 @@ module Slimcop
       # Skip if invalid syntax Ruby code is given. (e.g. "- if a?")
       return [] unless rubocop_processed_source.valid_syntax?
 
-      rubocop_team.investigate(rubocop_processed_source).offenses
+      rubocop_team.investigate(rubocop_processed_source).offenses.reject(&:disabled?)
     end
 
     private
