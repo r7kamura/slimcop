@@ -8,7 +8,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       described_class.new(
         auto_correct: false,
         file_path: 'dummy.slim',
-        rubocop_config: RuboCop::ConfigLoader.default_configuration,
+        rubocop_config: Slimcop::RuboCopConfigGenerator.new.call,
         source: source
       ).call
     end
@@ -22,7 +22,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
     context 'with valid condition' do
       it 'collects offenses from given Ruby code' do
         is_expected.to be_a(Array)
-        expect(subject.length).to eq(2)
+        expect(subject).not_to be_empty
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
 
       it 'excludes disabled offenses' do
         is_expected.to be_a(Array)
-        expect(subject.length).to eq(1)
+        expect(subject).to be_empty
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
 
       it 'excludes disabled offenses' do
         is_expected.to be_a(Array)
-        expect(subject.length).to eq(1)
+        expect(subject).to be_empty
       end
     end
   end
