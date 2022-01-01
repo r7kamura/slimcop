@@ -20,8 +20,7 @@ RSpec.describe Slimcop::RubyOffenseCollector do
     end
 
     context 'with valid condition' do
-      it 'collects offenses from given Ruby code' do
-        is_expected.to be_a(Array)
+      it 'returns expected offenses' do
         expect(subject).not_to be_empty
       end
     end
@@ -34,7 +33,6 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       end
 
       it 'excludes disabled offenses' do
-        is_expected.to be_a(Array)
         expect(subject).to be_empty
       end
     end
@@ -47,7 +45,6 @@ RSpec.describe Slimcop::RubyOffenseCollector do
       end
 
       it 'excludes disabled offenses' do
-        is_expected.to be_a(Array)
         expect(subject).to be_empty
       end
     end
