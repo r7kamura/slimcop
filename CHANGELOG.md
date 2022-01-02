@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix $LOAD_PATH at ./exe/slimcop.
+
 ## 0.9.0 - 2022-01-02
 
 ### Changed
