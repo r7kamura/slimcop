@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Require slimi >= 0.5.1 to extract Ruby code from Ruby attribute.
+
 ### Fixed
 
 - Fix -v and --version option.

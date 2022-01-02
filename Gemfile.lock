@@ -4,7 +4,7 @@ PATH
     slimcop (0.8.0)
       rainbow
       rubocop (>= 0.87)
-      slimi (>= 0.4)
+      slimi (>= 0.5.1)
 
 GEM
   remote: https://rubygems.org/
@@ -45,9 +45,11 @@ GEM
     rubocop-rspec (2.6.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    slimi (0.4.2)
+    slimi (0.5.1)
       temple
+      tilt
     temple (0.8.2)
+    tilt (2.0.10)
     unicode-display_width (2.1.0)
 
 PLATFORMS

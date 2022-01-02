@@ -18,6 +18,7 @@ RSpec.describe Slimcop::RubyExtractor do
         - a
         = b
         | #{c}
+        div a=1
       SLIM
     end
 
@@ -27,7 +28,8 @@ RSpec.describe Slimcop::RubyExtractor do
           [
             { begin_: 2, code: 'a', end_: 3 },
             { begin_: 6, code: 'b', end_: 7 },
-            { begin_: 12, code: 'c', end_: 13 }
+            { begin_: 12, code: 'c', end_: 13 },
+            { begin_: 21, code: '1', end_: 22 }
           ]
         )
       end

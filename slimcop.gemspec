@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rainbow'
   spec.add_dependency 'rubocop', '>= 0.87'
-  spec.add_dependency 'slimi', '>= 0.4'
+  spec.add_dependency 'slimi', '>= 0.5.1'
 end
