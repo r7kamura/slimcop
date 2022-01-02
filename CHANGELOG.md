@@ -10,7 +10,7 @@
 
 - Fix -v and --version option.
 
-## 0.8.0
+## 0.8.0 - 2021-12-29
 
 ### Changed
 
