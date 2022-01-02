@@ -72,6 +72,7 @@ module Slimcop
       options = {}
       parser = ::OptionParser.new
       parser.banner = 'Usage: slimcop [options] [file1, file2, ...]'
+      parser.version = VERSION
       parser.on('-a', '--auto-correct', 'Auto-correct offenses.') do
         options[:auto_correct] = true
       end

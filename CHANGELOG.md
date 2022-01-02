@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix -v and --version option.
+
 ## 0.8.0
 
 ### Changed
