@@ -40,7 +40,7 @@ Usage: slimcop [options] [file1, file2, ...]
 ### Example
 
 ```console
-$ slimcop
+$ slimcop 'spec/fixtures/**/*.slim'
 Inspecting 1 file
 C
 
