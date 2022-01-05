@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Use .slimcop.yml as its 1st default config file.
+
 ## 0.9.1 - 2022-01-04
 
 ### Fixed

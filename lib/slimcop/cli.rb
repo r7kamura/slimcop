@@ -76,7 +76,7 @@ module Slimcop
       parser.on('-a', '--auto-correct', 'Auto-correct offenses.') do
         options[:auto_correct] = true
       end
-      parser.on('-c', '--config=', 'Specify configuration file. (default: .rubocop.yml if it exists)') do |file_path|
+      parser.on('-c', '--config=', 'Specify configuration file. (default: .slimcop.yml or .rubocop.yml)') do |file_path|
         options[:additional_config_file_path] = file_path
       end
       parser.on('--[no-]color', 'Force color output on or off.') do |value|
