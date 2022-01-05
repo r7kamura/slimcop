@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slimcop (0.9.1)
+    slimcop (0.10.0)
       rainbow
       rubocop (>= 0.87)
       slimi (>= 0.5.1)
@@ -45,10 +45,12 @@ GEM
     rubocop-rspec (2.6.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    slimi (0.6.0)
+    slimi (0.7.0)
       temple
+      thor
       tilt
     temple (0.8.2)
+    thor (1.2.1)
     tilt (2.0.10)
     unicode-display_width (2.1.0)
 
