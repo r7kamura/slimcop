@@ -26,10 +26,10 @@ RSpec.describe Slimcop::RubyExtractor do
       it 'extracts Ruby codes and their location from given Slim code' do
         is_expected.to eq(
           [
-            { begin_: 2, code: 'a', end_: 3 },
-            { begin_: 6, code: 'b', end_: 7 },
-            { begin_: 12, code: 'c', end_: 13 },
-            { begin_: 21, code: '1', end_: 22 }
+            { code: 'a', offset: 2 },
+            { code: 'b', offset: 6 },
+            { code: 'c', offset: 12 },
+            { code: '1', offset: 21 }
           ]
         )
       end

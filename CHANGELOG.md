@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Use :offset instead of :begin_ at RubyExtractor.
+
 ## 0.10.0 - 2022-01-06
 
 ### Added

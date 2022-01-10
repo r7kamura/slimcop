@@ -16,9 +16,8 @@ module Slimcop
     def call
       ranges.map do |(begin_, end_)|
         {
-          begin_: begin_,
           code: @source[begin_...end_],
-          end_: end_
+          offset: begin_
         }
       end
     end
