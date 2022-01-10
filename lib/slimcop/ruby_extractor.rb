@@ -3,7 +3,7 @@
 require 'slimi'
 
 module Slimcop
-  # Extract codes from Slim source.
+  # Extract Ruby codes from Slim source.
   class RubyExtractor
     # @param [String, nil] file_path
     # @param [String] source
@@ -15,9 +15,10 @@ module Slimcop
     # @return [Array<Hash>]
     def call
       ranges.map do |(begin_, end_)|
+        clipped = RubyClipper.new(@source[begin_...end_]).call
         {
-          code: @source[begin_...end_],
-          offset: begin_
+          code: clipped[:code],
+          offset: begin_ + clipped[:offset]
         }
       end
     end

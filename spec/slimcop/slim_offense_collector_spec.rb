@@ -50,5 +50,29 @@ RSpec.describe Slimcop::SlimOffenseCollector do
         expect(subject).not_to be_empty
       end
     end
+
+    context 'with offense in if' do
+      let(:source) do
+        <<~SLIM
+          - if "a"
+        SLIM
+      end
+
+      it 'returns expected offenses' do
+        expect(subject).not_to be_empty
+      end
+    end
+
+    context 'with offense and do' do
+      let(:source) do
+        <<~SLIM
+          - a("b") do
+        SLIM
+      end
+
+      it 'returns expected offenses' do
+        expect(subject).not_to be_empty
+      end
+    end
   end
 end
