@@ -5,6 +5,7 @@
 ### Changed
 
 - Use :offset instead of :begin_ at RubyExtractor.
+- Detect offenses from code that containing `if`, `unless`, `do`, etc.
 
 ## 0.10.0 - 2022-01-06
 
