@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slimcop (0.10.0)
+    slimcop (0.11.0)
       rainbow
       rubocop (>= 0.87)
       slimi (>= 0.5.1)
