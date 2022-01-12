@@ -27,18 +27,6 @@ module Slimcop
 
     private
 
-    # @param [String] file_path
-    # @param [Array<Slimcop::Offense>] offenses
-    # @param [String] source
-    def correct(file_path:, offenses:, source:)
-      rewritten_source = SlimCorrector.new(
-        file_path: file_path,
-        offenses: offenses,
-        source: source
-      ).call
-      ::File.write(file_path, rewritten_source)
-    end
-
     # @return [Hash]
     def parse!
       options = {}

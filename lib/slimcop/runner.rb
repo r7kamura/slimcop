@@ -29,6 +29,18 @@ module Slimcop
 
     private
 
+    # @param [String] file_path
+    # @param [Array<Slimcop::Offense>] offenses
+    # @param [String] source
+    def correct(file_path:, offenses:, source:)
+      rewritten_source = SlimCorrector.new(
+        file_path: file_path,
+        offenses: offenses,
+        source: source
+      ).call
+      ::File.write(file_path, rewritten_source)
+    end
+
     # @param [Boolean] auto_correct
     # @param [String] file_path
     # @param [String] rubocop_config
@@ -50,23 +62,24 @@ module Slimcop
         max_trials_count.times do
           on_file_started(file_path)
           source = ::File.read(file_path)
-          offenses_per_file += investigate(
+          offenses = investigate(
             auto_correct: @auto_correct,
             file_path: file_path,
             rubocop_config: @rubocop_config,
             source: source
           )
-          break if offenses_per_file.empty?
+          offenses_per_file += offenses
+          break if offenses.empty?
 
           if @auto_correct
             correct(
               file_path: file_path,
-              offenses: offenses_per_file,
+              offenses: offenses,
               source: source
             )
           end
-          on_file_finished(file_path, offenses_per_file)
         end
+        on_file_finished(file_path, offenses_per_file)
         offenses_per_file
       end
     end
