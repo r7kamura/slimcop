@@ -15,27 +15,13 @@ module Slimcop
       rubocop_config = RuboCopConfigGenerator.new(additional_config_file_path: options[:additional_config_file_path]).call
       file_paths = PathFinder.new(patterns: @argv).call
 
-      formatter.started(file_paths)
-      offenses = file_paths.flat_map do |file_path|
-        formatter.file_started(file_path, {})
-        source = ::File.read(file_path)
-        offenses_ = investigate(
-          auto_correct: options[:auto_correct],
-          file_path: file_path,
-          rubocop_config: rubocop_config,
-          source: source
-        )
-        if options[:auto_correct]
-          correct(
-            file_path: file_path,
-            offenses: offenses_,
-            source: source
-          )
-        end
-        formatter.file_finished(file_path, offenses_)
-        offenses_
-      end
-      formatter.finished(file_paths)
+      offenses = Runner.new(
+        auto_correct: options[:auto_correct],
+        file_paths: file_paths,
+        formatter: formatter,
+        rubocop_config: rubocop_config
+      ).call
+
       exit(offenses.empty? ? 0 : 1)
     end
 
@@ -51,20 +37,6 @@ module Slimcop
         source: source
       ).call
       ::File.write(file_path, rewritten_source)
-    end
-
-    # @param [Boolean] auto_correct
-    # @param [String] file_path
-    # @param [String] rubocop_config
-    # @param [String] source
-    # @return [Array<Slimcop::Offense>]
-    def investigate(auto_correct:, file_path:, rubocop_config:, source:)
-      SlimOffenseCollector.new(
-        auto_correct: auto_correct,
-        file_path: file_path,
-        rubocop_config: rubocop_config,
-        source: source
-      ).call
     end
 
     # @return [Hash]
