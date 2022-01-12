@@ -71,13 +71,13 @@ module Slimcop
           offenses_per_file += offenses
           break if offenses.empty?
 
-          if @auto_correct
-            correct(
-              file_path: file_path,
-              offenses: offenses,
-              source: source
-            )
-          end
+          next unless @auto_correct
+
+          correct(
+            file_path: file_path,
+            offenses: offenses,
+            source: source
+          )
         end
         on_file_finished(file_path, offenses_per_file)
         offenses_per_file
