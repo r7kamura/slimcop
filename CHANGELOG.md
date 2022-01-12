@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.12.0 - 2022-01-12
+
 ### Changed
 
 - Keep trying auto-correction up to 7 times until no offense detected.
