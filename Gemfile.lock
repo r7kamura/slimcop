@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slimcop (0.12.0)
+    slimcop (0.13.0)
       slimi (>= 0.5.1)
       templatecop
 

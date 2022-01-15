@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.13.0 - 2022-01-15
+
 ### Changed
 
 - Use templatecop.
