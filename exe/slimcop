@@ -3,5 +3,12 @@
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'slimcop'
+require 'templatecop'
 
-Slimcop::Cli.new(ARGV).call
+Templatecop::Cli.call(
+  default_configuration_path: File.expand_path('../default.yml', __dir__),
+  default_path_patterns: %w[**/*.slim],
+  executable_name: 'slimcop',
+  implicit_configuration_paths: %w[.slimcop.yml .rubocop.yml],
+  ruby_extractor: Slimcop::RubyExtractor
+)

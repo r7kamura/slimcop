@@ -2,9 +2,8 @@ PATH
   remote: .
   specs:
     slimcop (0.12.0)
-      rainbow
-      rubocop (>= 0.87)
       slimi (>= 0.5.1)
+      templatecop
 
 GEM
   remote: https://rubygems.org/
@@ -49,6 +48,9 @@ GEM
       temple
       thor
       tilt
+    templatecop (0.1.0)
+      parser
+      rubocop (>= 0.87)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)

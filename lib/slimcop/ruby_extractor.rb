@@ -1,10 +1,25 @@
 # frozen_string_literal: true
 
 require 'slimi'
+require 'templatecop'
 
 module Slimcop
   # Extract Ruby codes from Slim source.
   class RubyExtractor
+    class << self
+      # @param [String, nil] file_path
+      # @param [String] source
+      def call(
+        file_path:,
+        source:
+      )
+        new(
+          file_path: file_path,
+          source: source
+        ).call
+      end
+    end
+
     # @param [String, nil] file_path
     # @param [String] source
     def initialize(file_path:, source:)
@@ -15,7 +30,7 @@ module Slimcop
     # @return [Array<Hash>]
     def call
       ranges.map do |(begin_, end_)|
-        clipped = RubyClipper.new(@source[begin_...end_]).call
+        clipped = ::Templatecop::RubyClipper.new(@source[begin_...end_]).call
         {
           code: clipped[:code],
           offset: begin_ + clipped[:offset]
