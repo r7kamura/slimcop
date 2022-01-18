@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.13.1 - 2022-01-18
+
 ### Fixed
 
 - Fix missing some metadata in gemspec.
