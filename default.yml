@@ -103,6 +103,9 @@ Style/IdenticalConditionalBranches:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/MultilineTernaryOperator:
+  Enabled: false
+
 Style/Next:
   Enabled: false
 

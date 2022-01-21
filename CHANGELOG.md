@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Disable Style/MultilineTernaryOperator by default.
+
 ## 0.13.1 - 2022-01-18
 
 ### Fixed
