@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.15.0 - 2022-01-22
+
 ### Changed
 
 - Disable Style/NestedTernaryOperator by default.
