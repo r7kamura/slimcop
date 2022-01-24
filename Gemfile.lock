@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slimcop (0.15.0)
+    slimcop (0.16.0)
       slimi (>= 0.5.1)
       templatecop
 
@@ -44,11 +44,11 @@ GEM
     rubocop-rspec (2.6.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    slimi (0.7.1)
+    slimi (0.7.2)
       temple
       thor
       tilt
-    templatecop (0.2.0)
+    templatecop (0.2.2)
       parallel
       parser
       rubocop (>= 0.87)

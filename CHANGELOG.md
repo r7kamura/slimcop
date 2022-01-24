@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.16.0 - 2022-01-25
+
 ### Chnaged
 
 - Disable Layout/FirstArrayElementLineBreak by default.
