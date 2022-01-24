@@ -115,7 +115,13 @@ Style/Next:
 Style/RescueModifier:
   Enabled: false
 
+Style/TrailingCommaInArguments:
+  Enabled: false
+
 Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 Style/WhileUntilDo:
