@@ -115,6 +115,9 @@ Style/Next:
 Style/RescueModifier:
   Enabled: false
 
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
 Style/WhileUntilDo:
   Enabled: false
 
