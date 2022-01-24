@@ -4,7 +4,7 @@
 
 ## 0.16.0 - 2022-01-25
 
-### Chnaged
+### Changed
 
 - Disable Layout/FirstArrayElementLineBreak by default.
 - Disable Layout/FirstHashElementLineBreak by default.
