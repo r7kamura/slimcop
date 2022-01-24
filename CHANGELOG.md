@@ -4,6 +4,9 @@
 
 ### Chnaged
 
+- Disable Layout/FirstArrayElementLineBreak by default.
+- Disable Layout/FirstHashElementLineBreak by default.
+- Disable Layout/FirstMethodArgumentLineBreak by default.
 - Disable Style/TrailingCommaInArrayLiteral by default.
 - Disable Style/TrailingCommaInArguments by default.
 - Disable Style/TrailingCommaInHashLiteral by default.

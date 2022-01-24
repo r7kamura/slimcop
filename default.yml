@@ -25,7 +25,16 @@ Layout/FirstArgumentIndentation:
 Layout/FirstArrayElementIndentation:
   Enabled: false
 
+Layout/FirstArrayElementLineBreak:
+  Enabled: false
+
 Layout/FirstHashElementIndentation:
+  Enabled: false
+
+Layout/FirstHashElementLineBreak:
+  Enabled: false
+
+Layout/FirstMethodArgumentLineBreak:
   Enabled: false
 
 Layout/FirstParameterIndentation:
