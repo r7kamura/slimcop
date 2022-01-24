@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Chnaged
+
+- Disable Style/TrailingCommaInArrayLiteral by default.
+
 ## 0.15.0 - 2022-01-22
 
 ### Changed
