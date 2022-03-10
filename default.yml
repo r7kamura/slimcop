@@ -49,9 +49,6 @@ Layout/IndentationConsistency:
 Layout/IndentationWidth:
   Enabled: false
 
-Layout/InitialIndentation:
-  Enabled: false
-
 Layout/LineEndStringConcatenationIndentation:
   Enabled: false
 

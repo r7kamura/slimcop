@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Enable Layout/InitialIndentation.
+
 ## 0.16.0 - 2022-01-25
 
 ### Changed
