@@ -48,7 +48,7 @@ GEM
       temple
       thor
       tilt
-    templatecop (0.2.2)
+    templatecop (0.3.0)
       parallel
       parser
       rubocop (>= 0.87)
