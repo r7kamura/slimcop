@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.17.1 - 2022-07-14
+
 ### Fixed
 
 - Fix failure to detect Ruby code from nested structure.
