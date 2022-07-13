@@ -59,12 +59,9 @@ module Slimcop
     def traverse(node, &block)
       return unless node.instance_of?(::Array)
 
-      if node[0] == :slimi && node[1] == :position
-        block.call(node[2], node[3])
-      else
-        node.each do |element|
-          traverse(element, &block)
-        end
+      block.call(node[2], node[3]) if node[0] == :slimi && node[1] == :position
+      node.each do |element|
+        traverse(element, &block)
       end
     end
   end
