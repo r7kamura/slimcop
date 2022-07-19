@@ -5,6 +5,7 @@
 ### Changed
 
 - Disable Style/Semicolon by default.
+- Disable Style/ParallelAssignment by default.
 
 ## 0.17.1 - 2022-07-14
 
