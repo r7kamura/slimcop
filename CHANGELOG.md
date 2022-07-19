@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Disable Style/Semicolon by default.
+
 ## 0.17.1 - 2022-07-14
 
 ### Fixed
