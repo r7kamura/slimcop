@@ -55,3 +55,21 @@ spec/fixtures/dummy.slim:3:5: C: [Correctable] Style/StringLiterals: Prefer sing
 
 1 file inspected, 2 offenses detected, 2 offenses auto-correctable
 ```
+
+### Configuration
+
+Slimcop will start looking for the configuration file in the following locations:
+
+1. /path/to/project/.slimcop.yml
+2. /path/to/project/.rubocop.yml
+
+For example, if you want to disable some cops on slimcop, you can add the following file to your project:
+
+```yaml
+# .slimcop.yml
+inherit_from:
+  - .rubocop.yml
+
+Foo/Bar:
+  Enabled: false
+```
