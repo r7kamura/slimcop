@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.18.0 - 2023-04-04
+
 ### Changed
 
 - Disable Style/Semicolon by default.
