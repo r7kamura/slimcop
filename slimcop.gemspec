@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'rubocop', '>= 1.49'
   spec.add_dependency 'slimi', '>= 0.5.1'
   spec.add_dependency 'templatecop'
 end

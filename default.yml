@@ -121,6 +121,9 @@ Style/Next:
 Style/ParallelAssignment:
   Enabled: false
 
+Style/RedundantLineContinuation:
+  Enabled: false
+
 Style/RescueModifier:
   Enabled: false
 
