@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.19.1 - 2023-10-16
+
 - Fix typo about Style/RedundantParentheses.
 
 ## 0.19.0 - 2023-10-16
