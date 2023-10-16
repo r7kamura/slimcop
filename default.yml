@@ -124,6 +124,9 @@ Style/ParallelAssignment:
 Style/RedundantLineContinuation:
   Enabled: false
 
+Style/RedundantParantheses:
+  Enabled: false
+
 Style/RescueModifier:
   Enabled: false
 
