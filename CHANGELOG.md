@@ -4,7 +4,7 @@
 
 ## 0.19.0 - 2023-10-16
 
-- Disable Style/RedundantParantheses by default.
+- Disable Style/RedundantParentheses by default.
 
 ## 0.18.0 - 2023-04-04
 
