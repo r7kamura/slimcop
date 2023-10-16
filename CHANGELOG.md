@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix typo about Style/RedundantParentheses.
+
 ## 0.19.0 - 2023-10-16
 
 - Disable Style/RedundantParentheses by default.
