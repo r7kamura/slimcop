@@ -5,6 +5,9 @@
 
 [RuboCop](https://github.com/rubocop/rubocop) runner for [Slim template](https://github.com/slim-template/slim).
 
+> [!WARNING]
+> This gem has been deprecated. Please consider using [rubocop-slim](https://github.com/r7kamura/rubocop-slim) instead.
+
 ## Installation
 
 Add this line to your application's Gemfile:
